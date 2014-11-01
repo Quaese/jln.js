@@ -1,0 +1,11 @@
+/**
+* html5.polyfills.css
+* css polyfills for some html5 features
+*
+* @lastModified: 13.10.2014
+*/
+
+
+*[hidden]{
+  display: none;
+}
