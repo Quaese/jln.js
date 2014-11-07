@@ -5,7 +5,7 @@
 	* a simple modular framework for JavaScript
 	*
 	* @author: j-l-n <https://github.com/j-l-n>
-	* @lastModified: 20.10.2014
+	* @lastModified: 07.11.2014
 	*/
 
 
@@ -60,7 +60,7 @@
 		/**
 		* Function require
 		* 
-		* @lastModified: 20.10.2014
+		* @lastModified: 07.11.2014
 		* @module: window.require
 		* @description: check if a module is embedded and if not, load it via a synchronous XMLHttpRequest
 		* @param: modules {Array} array of required modules; by passing the URL of the relevant file, You can also load other modules such as jQuery this way
@@ -86,10 +86,10 @@
 				var moduleUrl, xhr, script;
 				if(isjlnModule.exec(module) !== null){
 					if(callback){
-						moduleUrl = "https://raw.githubusercontent.com/j-l-n/jln.js/master/modules/" + module + ".js";
+						moduleUrl = "https://raw.githubusercontent.com/j-l-n/jln.js/master/modules/" + module + ".js"; //embed directly from GitHub
 					}
 					else{
-						moduleUrl = "https://rawgit.com/j-l-n/jln.js/master/modules/" + module + ".js"; //use CORS proxy for loading module via AJAX
+						moduleUrl = "https://rawgit.com/j-l-n/jln.js/master/modules/" + module + ".js"; //use CORS proxy for loading module via XMLHttpRequest
 					}
 				}
 				else{ //external scripts
@@ -126,7 +126,7 @@
 					script.type = "text/javascript";
 					script.text = xhr.responseText;
 					document.getElementsByTagName("head")[0].appendChild(script);
-					if(xhr.readyState === 4 && xhr.status === 4){
+					if(xhr.readyState === 4 && xhr.status === 200){
 						console.log("Loaded module „" + module + "“ from " + moduleUrl + ".", script);
 					}
 					else{
